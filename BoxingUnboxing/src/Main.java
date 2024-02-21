@@ -3,8 +3,9 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         int age = 10;
+        Integer someNum = 1;
+        System.out.println(someNum.compareTo(age));
 
-        Integer someNum = 10;
         Long l = 123123123123123L;
         double myDouble = convertToDouble(age);
         System.out.println(myDouble);
