@@ -5,6 +5,14 @@ public class Main {
         Dachshund dachshund = new Dachshund();
         Chihuahua chihuahua = new Chihuahua();
 
+        gs.hunt();
+
+
+        Dog someDog = new GermanShepard();
+        someDog.bark();
+
+
+
         makeDogSpeak(dachshund);
         makeDogSpeak(gs);
         makeDogSpeak(chihuahua);
@@ -13,6 +21,7 @@ public class Main {
 
     public static void makeDogSpeak(Dog dog) {
         dog.bark();
+        dog.hunt();
     }
 }
 
@@ -25,6 +34,8 @@ class GermanShepard extends Dog {
     public void bark() {
         System.out.println("BAAAAAAAAARK");
     }
+
+    public void hunt() {}
 }
 
 class Chihuahua extends Dog {

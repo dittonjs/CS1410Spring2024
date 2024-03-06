@@ -35,6 +35,10 @@ class Account {
 
     private int accountNumber = 12323;
 
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
