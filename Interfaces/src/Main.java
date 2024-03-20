@@ -14,6 +14,7 @@ public class Main {
         Course course2 = new Course("ENGR 1400");
         System.out.println(course1.compareTo(course2));
 //        writeObjectToFile(10);
+        writeObjectToFile(new SomeClass());
     }
 
 
@@ -25,7 +26,16 @@ public class Main {
 }
 
 interface Writeable {
-    void writeToFile();
+    default void writeToFile() {
+
+    };
+}
+
+
+class SomeClass implements Writeable {
+    public void writeToFile() {
+        System.out.println();
+    }
 }
 
 class Account implements Writeable {
