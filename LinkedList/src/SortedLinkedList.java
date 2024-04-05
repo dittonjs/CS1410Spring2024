@@ -1,16 +1,26 @@
-public class LinkedList<T> {
+public class SortedLinkedList<T extends Comparable<T>> {
     private Node head = new Node();
-    private Node tail = head;
     private class Node {
         T data;
         Node next;
     }
 
     public void insert(T data) {
-        Node node = new Node();
-        node.data = data;
-        tail.next = node;
-        tail = tail.next;
+        Node newNode = new Node();
+        newNode.data = data;
+
+        Node parent = head;
+        Node node = head.next;
+        while(node != null) {
+            if (data.compareTo(node.data) <= 0) {
+                parent.next= newNode;
+                newNode.next = node;
+                return;
+            }
+            parent = node;
+            node = node.next;
+        }
+        parent.next = newNode;
     }
 
     public boolean find(T data) {
@@ -28,11 +38,8 @@ public class LinkedList<T> {
         Node parent = head;
         Node node = parent.next;
         while(node != null) {
-            if (node.data == data) {
+            if (node.data.compareTo(data) == 0) {
                 parent.next = node.next;
-                if (node == tail) {
-                    tail = parent;
-                }
                 return true;
             }
             parent = node;
