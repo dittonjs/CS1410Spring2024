@@ -9,7 +9,33 @@ public class Main {
         tree.insert(5);
         tree.insert(7);
         tree.insert(11);
+        tree.insert(12);
 
+        tree.display();
+
+        tree.remove(11);
+
+        System.out.println();
+        tree.display();
+
+        tree.remove(4);
+
+        System.out.println();
+        tree.display();
+
+        tree.remove(6);
+
+        System.out.println();
+        tree.display();
+
+        tree.remove(2);
+
+        System.out.println();
+        tree.display();
+
+        tree.remove(5);
+
+        System.out.println();
         tree.display();
 
         System.out.println(tree.find(3));

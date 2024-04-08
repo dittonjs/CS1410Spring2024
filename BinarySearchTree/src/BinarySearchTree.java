@@ -5,7 +5,7 @@ public class BinarySearchTree {
         TreeNode right;
     }
 
-    TreeNode root;
+    private TreeNode root;
 
     public void insert(int data) {
         TreeNode newNode = new TreeNode();
@@ -61,4 +61,49 @@ public class BinarySearchTree {
             return find(node.right, data);
         }
     }
+
+    public void remove(int data) {
+        TreeNode parent = null;
+        TreeNode node = root;
+
+        // find the node to attach the new node to
+        boolean done = false;
+        while(!done && node != null) {
+            if(data < node.data) {// go to left
+                parent = node;
+                node = node.left;
+            } else if (data > node.data) { // go to the right
+                parent = node;
+                node = node.right;
+            } else {
+                done = true;
+            }
+        }
+
+        if (node == null) return;
+
+        if (node.left == null) {
+            if (node == root) {
+                root = node.right;
+            } else if (node == parent.left) {
+                parent.left = node.right;
+            } else {
+                parent.right = node.right;
+            }
+        } else { // left node == less easy
+           TreeNode parentOfRightMost = node;
+           TreeNode rightMost = node.left;
+           while(rightMost.right != null) {
+               parentOfRightMost = rightMost;
+               rightMost = rightMost.right;
+           }
+           node.data = rightMost.data;
+           if (parentOfRightMost.left == rightMost) {
+               parentOfRightMost.left = rightMost.left;
+           } else {
+               parentOfRightMost.right = rightMost.left;
+           }
+        }
+    }
 }
+
