@@ -53,6 +53,26 @@ public class BinarySearchTree {
         displayInOrder(node.right);
     }
 
+    public int height() {
+        return height(root);
+    }
+
+    private int height(TreeNode node) {
+        if (node == null) return -1;
+        return 1 + Math.max(height(node.left), height(node.right));
+    }
+
+    public int leafNodes() {
+        return leafNodes(root);
+    }
+
+    private int leafNodes(TreeNode node) {
+        if (node == null) return 0;
+        if (node.left == null && node.right == null) return 1;
+
+        return leafNodes(node.left) + leafNodes(node.right);
+    }
+
     public void displayPreOrder() {
         displayPreOrder(root);
     }
@@ -92,6 +112,7 @@ public class BinarySearchTree {
     }
 
     public void displayBreadthFirst() {
+        if (root == null) return;
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while(!queue.isEmpty()) {

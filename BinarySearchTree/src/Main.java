@@ -15,7 +15,11 @@ public class Main {
 
         System.out.println("---- original tree ----");
         tree.displayTreeStructure();
+        System.out.printf("Height: %d\n", tree.height());
+
         tree.displayBreadthFirst();
+
+
 
         BinarySearchTree copy = tree.copy();
         System.out.println("---- copy tree ----");
